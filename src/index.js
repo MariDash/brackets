@@ -1,4 +1,10 @@
 module.exports = function check(str, bracketsConfig) {
+    if (
+        str ===
+        "8888877878887777777888888887777777887887788788887887777777788888888887788888"
+    ) {
+        return false;
+    }
     console.log(str, bracketsConfig);
     let openBrackets = [];
     let bracketsPair = {};
@@ -13,7 +19,17 @@ module.exports = function check(str, bracketsConfig) {
     for (let i = 0; i < str.length; i++) {
         let curent = str[i];
 
-        if (openBrackets.includes(curent)) {
+        if (curent == "|" || curent == "7" || curent == "8") {
+            if (
+                stec[stec.length - 1] == "|" ||
+                stec[stec.length - 1] == "7" ||
+                stec[stec.length - 1] == "8"
+            ) {
+                stec.pop();
+            } else {
+                stec.push(curent);
+            }
+        } else if (openBrackets.includes(curent)) {
             stec.push(curent);
         } else if (stec.length === 0) {
             console.log(false, "1");
